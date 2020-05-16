@@ -30,10 +30,10 @@ function H = computeH(t1, t2)
     end
     
     tempH = zeros(3,3);
-    B = A * A';
+    B = (A' * A);
     [V, ~] = eig(B);
     tempH = V(:,1);
-    tempH = reshape(tempH, 3, 3)';
+    tempH = reshape(tempH, [3, 3])';
     H = tempH;
 end
 
