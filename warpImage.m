@@ -1,4 +1,4 @@
-% part c
+%modified
 function [warpIm, mergeIm] = warpImage(inputIm, refIm, H)
     
     [rows, cols, inputDimension] = size(inputIm);
@@ -29,10 +29,10 @@ function [warpIm, mergeIm] = warpImage(inputIm, refIm, H)
     corners(3,:) = corners(3,:) / corners(3,3);
     corners(4,:) = corners(4,:) / corners(4,3);
 
-    top = round(min(corners(:,1)));
-    bot = round(max(corners(:,1)));
-    left = round (min(corners(:,2)));
-    right = round (max(corners(:,2)));
+    top = round(min(corners(:,1)),0);
+    bot = round(max(corners(:,1)),0);
+    left = round (min(corners(:,2)),0);
+    right = round (max(corners(:,2)),0);
     
     height = abs(top - bot);
     length = abs(left - right);
