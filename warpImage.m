@@ -44,8 +44,8 @@ function [warpIm, mergeIm] = warpImage(inputIm, refIm, H)
         for j = 1:(right - left)
             topIndex = top + i;
             leftIndex = left + j;
-            pixel = [topIndex, leftIndex, 1]';
-            pixel = invH * pixel;
+            %pixel = [topIndex, leftIndex, 1]';
+            pixel = invH * ([topIndex, leftIndex, 1]');
             pixel = pixel / pixel(3);
 
             a(i,j) = pixel(1);
