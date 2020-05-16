@@ -47,25 +47,25 @@ function [warpIm, mergeIm] = warpImage(inputIm, refIm, H)
         end
     end
 
-for i = 1 : 3
-    if i == 1
-        warpImR = interp2(im2double(inputIm(:,:,i)),a,b)';
-    elseif i == 2
-        warpImG = interp2(im2double(inputIm(:,:,i)),a,b)';
-    elseif i == 3
-        warpImB = interp2(im2double(inputIm(:,:,i)),a,b)';
-    end
-end
-
-warpIm = cat(3, warpImR, warpImG, warpImB);
-
-mergeIm = warpIm;
-refIm = im2double(refIm);
-for i = 1:size(refIm,1)
-    for j = 1:size(refIm,2)
-        rowShifted = i + max(0,-imageLeft);
-        colShifted = j + max(0,-imageTop);
-        mergeIm(rowShifted,colShifted,1:3) = refIm(i,j,1:3);
+    for i = 1 : 3
+        if i == 1
+            warpImR = interp2(im2double(inputIm(:,:,i)),a,b)';
+        elseif i == 2
+            warpImG = interp2(im2double(inputIm(:,:,i)),a,b)';
+        elseif i == 3
+            warpImB = interp2(im2double(inputIm(:,:,i)),a,b)';
+        end
     end
 
+    warpIm = cat(3, warpImR, warpImG, warpImB);
+
+    mergeIm = warpIm;
+    refIm = im2double(refIm);
+    for i = 1:size(refIm,1)
+        for j = 1:size(refIm,2)
+            rowShifted = i + max(0,-imageLeft);
+            colShifted = j + max(0,-imageTop);
+            mergeIm(rowShifted,colShifted,1:3) = refIm(i,j,1:3);
+        end
+    end
 end
